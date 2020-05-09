@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Echart 最大余额法 | 写代码的小哥哥
+  </title>
+  <meta name="description" content="PHP是世界上最好的语言">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="ZhangHuiXi">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 3 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 2 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 2 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">写代码的小哥哥</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    ZhangHuiXi
+
+    <span class="post-date float-right" title="{{moment(1553934032284).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1553934032284).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Echart 最大余额法</h1>
+    <h4 id="最大余额法"><a href="#最大余额法" class="headerlink" title="最大余额法"></a>最大余额法</h4><p>参考文章<a href="https://www.jianshu.com/p/9cb92be954f8" target="_blank" rel="noopener">最大余额法</a></p>
+<h4 id="php实现"><a href="#php实现" class="headerlink" title="php实现"></a>php实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * 最大余额法</span><br><span class="line">     * @param array $data</span><br><span class="line">     * @return array</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">   function MaxBalance($data)</span><br><span class="line">    &#123;</span><br><span class="line">        $sum = array_sum($data);</span><br><span class="line">        $res = [];</span><br><span class="line">        foreach ($data as $key=&gt;$item) &#123;</span><br><span class="line">            $res[$key][&apos;percent&apos;] = ($item/$sum)*10000;</span><br><span class="line">        &#125;</span><br><span class="line">        //取出小数点</span><br><span class="line">        $result = [];</span><br><span class="line">        foreach ($res as $key=&gt;$value) &#123;</span><br><span class="line">//            $tmp = explode(&apos;.&apos;, $value[&apos;percent&apos;]);</span><br><span class="line">            $result[$value[&apos;percent&apos;]][&apos;percent&apos;] = $value[&apos;percent&apos;];</span><br><span class="line">            $tmp = explode(&apos;.&apos;, $value[&apos;percent&apos;]);</span><br><span class="line">            $result[$value[&apos;percent&apos;]][&apos;point&apos;] = $tmp[1];</span><br><span class="line">            $result[$value[&apos;percent&apos;]][&apos;int&apos;] = $tmp[0];</span><br><span class="line">        &#125;</span><br><span class="line">        //小数点排序</span><br><span class="line">        $sort = array_column($result, &apos;point&apos;);</span><br><span class="line">        array_multisort($sort, SORT_DESC, $result);</span><br><span class="line">        $int  = array_column($result,&apos;int&apos;);</span><br><span class="line">        $intSum = array_sum($int);</span><br><span class="line">        $count = 10000 - $intSum;</span><br><span class="line">        //余额排序分配席位</span><br><span class="line">        foreach ($result as $key=&gt;$value) &#123;</span><br><span class="line">            if($key &lt; $count)&#123;</span><br><span class="line">                $result[$key][&apos;int&apos;]  = ($result[$key][&apos;int&apos;] + 1)/100;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                $result[$key][&apos;int&apos;]  = $result[$key][&apos;int&apos;]/100;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  var_dump(MaxBalance([2,3,4]));</span><br></pre></td></tr></table></figure>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://blog.csdn.net/weixin_39130000" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 ZhangHuiXi</li>
+      <li><a href="https://blog.csdn.net/weixin_39130000">Home</a></li>
+      
+      <li><a href="https://github.com/zhanghuixi">Github</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

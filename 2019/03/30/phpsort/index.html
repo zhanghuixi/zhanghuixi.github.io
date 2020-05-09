@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    php排序算法 | 写代码的小哥哥
+  </title>
+  <meta name="description" content="PHP是世界上最好的语言">
+  
+  <meta name="keywords" content="
+  algorithm
+  ">
+  
+  <meta name="author" content="ZhangHuiXi">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 3 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 2 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 2 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">写代码的小哥哥</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    ZhangHuiXi
+
+    <span class="post-date float-right" title="{{moment(1553936381866).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1553936381866).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>php排序算法</h1>
+    <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$arr=array(7,3,8,6,4,2,9,5,1);</span><br><span class="line">function quick_sort($arr)</span><br><span class="line">&#123;</span><br><span class="line">    //判断参数是否是一个数组</span><br><span class="line">    if(!is_array($arr)) return false;</span><br><span class="line">    //递归出口:数组长度为1，直接返回数组</span><br><span class="line">    $length = count($arr);</span><br><span class="line">    if( $length&lt;=1)  return $arr;</span><br><span class="line">    //数组元素有多个,则定义两个空数组</span><br><span class="line">    $left = $right = array();</span><br><span class="line">    //使用for循环进行遍历，把第一个元素当做比较的对象</span><br><span class="line">    for($i=1;$i&lt;$length;$i++)</span><br><span class="line">    &#123;</span><br><span class="line">        //判断当前元素的大小</span><br><span class="line">        if($arr[$i]&lt;$arr[0])&#123;</span><br><span class="line">            $left[]=$arr[$i];</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            $right[]=$arr[$i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //递归调用</span><br><span class="line">    $left=quick_sort($left);</span><br><span class="line">    $right=quick_sort($right);</span><br><span class="line">    //将所有的结果合并</span><br><span class="line">    return array_merge($left,array($arr[0]),$right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print_r(quick_sort($arr));</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$arr = [7,8,5,4,9,3];</span><br><span class="line">function InsertSort($arr)</span><br><span class="line">&#123;</span><br><span class="line">    $count = count($arr);</span><br><span class="line">    for ($i = 1; $i &lt; $count; $i++) &#123;</span><br><span class="line">        //需要比较的数字</span><br><span class="line">        $tmp = $arr[$i];</span><br><span class="line">        //内层循环比较并插入数值</span><br><span class="line">        for ($j = $i-1; $j &gt;= 0; $j--) &#123;</span><br><span class="line">            if ($tmp &lt; $arr[$j]) &#123;</span><br><span class="line">                //将后边的元素与前面的元素互换</span><br><span class="line">                $arr[$j+1] = $arr[$j];</span><br><span class="line">                //将前面的数设置为 当前需要交换的数</span><br><span class="line">                $arr[$j] = $tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $arr;</span><br><span class="line">&#125;</span><br><span class="line">print_r(InsertSort($arr));</span><br></pre></td></tr></table></figure>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$arr = [8,7,5,3];</span><br><span class="line">//两两进行比较,大的不断向后沉淀,小的不断冒出</span><br><span class="line">function BubbleSorts($arr)</span><br><span class="line">&#123;</span><br><span class="line">    $count = count($arr);</span><br><span class="line">    for ($i = 1; $i &lt; $count; $i++) &#123;</span><br><span class="line">        //1,2,3</span><br><span class="line">        for ($j=0; $j &lt; $count-$i; $j++) &#123;</span><br><span class="line">            //0,1,2//0,1//0</span><br><span class="line">            if ($arr[$j] &gt; $arr[$j+1])&#123;</span><br><span class="line">                $tmp = $arr[$j];</span><br><span class="line">                $arr[$j] = $arr[$j+1];</span><br><span class="line">                $arr[$j+1] = $tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $arr;</span><br><span class="line">&#125;</span><br><span class="line">print_r(BubbleSorts($arr));</span><br></pre></td></tr></table></figure>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//外层循环每次找出最大最小的</span><br><span class="line">$arr = [8,7,5,3];</span><br><span class="line">function selectSort($arr)</span><br><span class="line">&#123;</span><br><span class="line">    $count = count($arr);</span><br><span class="line">    //外层循环 0/ n-1次</span><br><span class="line">    for ($i = 0; $i &lt; $count; $i++) &#123;</span><br><span class="line">        //内层循环 1,2,3/</span><br><span class="line">        for ($j = $i+1; $j &lt; $count; $j++) &#123;</span><br><span class="line">           if ($arr[$i] &gt; $arr[$j]) &#123;</span><br><span class="line">                $tmp = $arr[$i];</span><br><span class="line">                $arr[$i] = $arr[$j];</span><br><span class="line">                $arr[$j] = $tmp;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $arr;</span><br><span class="line">&#125;</span><br><span class="line">print_r(selectSort($arr));</span><br></pre></td></tr></table></figure>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://blog.csdn.net/weixin_39130000" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 ZhangHuiXi</li>
+      <li><a href="https://blog.csdn.net/weixin_39130000">Home</a></li>
+      
+      <li><a href="https://github.com/zhanghuixi">Github</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
